@@ -85,11 +85,13 @@ async def _try_login(
         else:
             data[CONF_AUTH_TYPE] = AuthType.SMART_HOME
 
+        _LOGGER.debug(f"Try to login with credentials: {data}")
         response = await manager._login(data, True)
 
         if response.get(TUYA_RESPONSE_SUCCESS, False):
             return data
 
+    _LOGGER.debug(f"Login response: {response}")
     errors["base"] = "login_error"
     if response:
         placeholders.update(
