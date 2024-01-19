@@ -8,9 +8,9 @@ import json
 from typing import Any, Iterable
 
 from homeassistant.const import (
-    CONF_ADDRESS, 
+    CONF_ADDRESS,
     CONF_DEVICE_ID,
-    CONF_COUNTRY_CODE,
+    CONF_COUNTRY,
     CONF_PASSWORD,
     CONF_USERNAME,
 )
@@ -78,7 +78,7 @@ CONF_TUYA_LOGIN_KEYS = [
     CONF_AUTH_TYPE,
     CONF_USERNAME,
     CONF_PASSWORD,
-    CONF_COUNTRY_CODE,
+    CONF_COUNTRY,
     CONF_APP_TYPE,
 ]
 
@@ -146,7 +146,7 @@ class HASSTuyaBLEDeviceManager(AbstaractTuyaBLEDeviceManager):
             api.connect,
             data.get(CONF_USERNAME, ""),
             data.get(CONF_PASSWORD, ""),
-            data.get(CONF_COUNTRY_CODE, ""),
+            data.get(CONF_COUNTRY, ""),
             data.get(CONF_APP_TYPE, ""),
         )
 
