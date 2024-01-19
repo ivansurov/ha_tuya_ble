@@ -19,9 +19,9 @@ from homeassistant.components.bluetooth import (
     async_discovered_service_info,
 )
 from homeassistant.const import (
-    CONF_ADDRESS, 
+    CONF_ADDRESS,
     CONF_DEVICE_ID,
-    CONF_COUNTRY_CODE,
+    CONF_COUNTRY,
     CONF_PASSWORD,
     CONF_USERNAME,
 )
@@ -65,7 +65,7 @@ async def _try_login(
     country = [
         country
         for country in TUYA_COUNTRIES
-        if country.name == user_input[CONF_COUNTRY_CODE]
+        if country.name == user_input[CONF_COUNTRY]
     ][0]
 
     data = {
@@ -75,7 +75,7 @@ async def _try_login(
         CONF_ACCESS_SECRET: user_input[CONF_ACCESS_SECRET],
         CONF_USERNAME: user_input[CONF_USERNAME],
         CONF_PASSWORD: user_input[CONF_PASSWORD],
-        CONF_COUNTRY_CODE: country.country_code,
+        CONF_COUNTRY: country.country_code,
     }
 
     for app_type in (TUYA_SMART_APP, SMARTLIFE_APP, ""):
@@ -109,10 +109,10 @@ def _show_login_form(
     placeholders: dict[str, Any],
 ) -> FlowResult:
     """Shows the Tuya IOT platform login form."""
-    if user_input is not None and user_input.get(CONF_COUNTRY_CODE) is not None:
+    if user_input is not None and user_input.get(CONF_COUNTRY) is not None:
         for country in TUYA_COUNTRIES:
-            if country.country_code == user_input[CONF_COUNTRY_CODE]:
-                user_input[CONF_COUNTRY_CODE] = country.name
+            if country.country_code == user_input[CONF_COUNTRY]:
+                user_input[CONF_COUNTRY] = country.name
                 break
 
     def_country_name: str | None = None
@@ -128,8 +128,8 @@ def _show_login_form(
         data_schema=vol.Schema(
             {
                 vol.Required(
-                    CONF_COUNTRY_CODE,
-                    default=user_input.get(CONF_COUNTRY_CODE, def_country_name),
+                    CONF_COUNTRY,
+                    default=user_input.get(CONF_COUNTRY, def_country_name),
                 ): vol.In(
                     # We don't pass a dict {code:name} because country codes can be duplicate.
                     [country.name for country in TUYA_COUNTRIES]
