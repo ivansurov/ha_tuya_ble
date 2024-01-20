@@ -191,9 +191,11 @@ class TuyaBLEOptionsFlow(OptionsFlowWithConfigEntry):
                     placeholders,
                 )
                 if login_data:
+                    _LOGGER.debug(f"Get device: {address} credentials")
                     credentials = await entry.manager.get_device_credentials(
                         address, True, True
                     )
+                    _LOGGER.debug(f"Device: {address} credentials: {credentials}")
                     if credentials:
                         return self.async_create_entry(
                             title=self.config_entry.title,
