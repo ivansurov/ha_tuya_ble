@@ -300,9 +300,11 @@ class TuyaBLEConfigFlow(ConfigFlow, domain=DOMAIN):
                 discovery_info.address, raise_on_progress=False
             )
             self._abort_if_unique_id_configured()
+            _LOGGER.debug(f"Get device: {address} credentials. Step device")
             credentials = await self._manager.get_device_credentials(
                 discovery_info.address, self._get_device_info_error, True
             )
+            _LOGGER.debug(f"Device: {address} credentials: {credentials}. Step device")
             self._data[CONF_ADDRESS] = discovery_info.address
             if credentials is None:
                 self._get_device_info_error = True
