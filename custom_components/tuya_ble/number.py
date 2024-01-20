@@ -429,6 +429,35 @@ mapping: dict[str, TuyaBLECategoryNumberMapping] = {
             ],
         },
     ),
+    "dcq": TuyaBLECategoryNumberMapping(
+        products={
+            "gcslbvj0": [  # Smart Laser Dot Cats
+                TuyaBLENumberMapping(
+                    dp_id=101,
+                    description=NumberEntityDescription(
+                        key="Timing",
+                        icon="mdi:timer",
+                        native_max_value=15,
+                        native_min_value=1,
+                        native_unit_of_measurement=TIME_MINUTES,
+                        native_step=1,
+                    ),
+                ),
+                TuyaBLENumberMapping(
+                    dp_id=104,
+                    description=NumberEntityDescription(
+                        key="Review",
+                        icon="mdi:debug-step-over",
+                        native_max_value=5,
+                        native_min_value=0,
+                        native_unit_of_measurement=TIME_MINUTES,
+                        native_step=1,
+                        entity_category=EntityCategory.CONFIG,
+                    ),
+                ),
+            ],
+        },
+    ),
 }
 
 

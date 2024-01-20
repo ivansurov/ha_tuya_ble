@@ -119,7 +119,7 @@ class TuyaBLEEntity(CoordinatorEntity):
                 )
             self._hass.create_task(datapoint.set_value(value))
 
-    
+
     def _send_command(self, commands : list[dict[str, Any]]) -> None:
         """Send the commands to the device"""
         for command in commands:
@@ -370,7 +370,7 @@ devices_database: dict[str, TuyaBLECategoryInfo] = {
                 [
                     "blliqpsj",
                     "ndvkgsrm",
-                    "yiihr7zh", 
+                    "yiihr7zh",
                     "neq16kgd"
                 ],  # device product_ids
                 TuyaBLEProductInfo(
@@ -416,10 +416,10 @@ devices_database: dict[str, TuyaBLECategoryInfo] = {
         products={
             **dict.fromkeys(
             [
-            "drlajpqc", 
+            "drlajpqc",
             "nhj2j7su",
             ],  # device product_id
-            TuyaBLEProductInfo(  
+            TuyaBLEProductInfo(
                 name="Thermostatic Radiator Valve",
                 ),
             ),
@@ -451,19 +451,24 @@ devices_database: dict[str, TuyaBLECategoryInfo] = {
     "dd": TuyaBLECategoryInfo(
         products={
             **dict.fromkeys(
-            [
-              "nvfrtxlq",
-            ],  # device product_id
-            TuyaBLEProductInfo(
-                name="LGB102 Magic Strip Lights",
-                manufacturer="Magiacous",
-		),
+                ["nvfrtxlq"],  # device product_id
+                TuyaBLEProductInfo(
+                    name="LGB102 Magic Strip Lights",
+                    manufacturer="Magiacous",
+                ),
             ),
         },
-        info = TuyaBLEProductInfo(
-                name="Strip Lights",
-		),
-
+        info=TuyaBLEProductInfo(
+            name="Strip Lights",
+        ),
+    ),
+    "dcq": TuyaBLECategoryInfo(
+        products={
+            "gcslbvj0":  # device product_id
+            TuyaBLEProductInfo(
+                name="Smart Laser Dot Cats",
+            ),
+        },
     ),
 }
 
