@@ -329,15 +329,14 @@ mapping: dict[str, TuyaBLECategorySwitchMapping] = {
         },
     ),
     "dcq": TuyaBLECategorySwitchMapping(
+        # https://github.com/blakadder/templates/blob/090840889e635fe3be5b170ce94d2484b733468b/_templates/petoneer_TY011
         products={
             "gcslbvj0": [  # Smart Laser Dot Cats
                 TuyaBLESwitchMapping(
                     dp_id=105,
                     description=SwitchEntityDescription(
                         key="switch",
-                        icon="mdi:circle-small",
-                        entity_category=EntityCategory.CONFIG,
-                        entity_registry_enabled_default=False,
+                        entity_registry_enabled_default=True,
                     ),
                 ),
             ],

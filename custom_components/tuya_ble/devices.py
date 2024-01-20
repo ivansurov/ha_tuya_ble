@@ -64,6 +64,7 @@ class TuyaBLEProductInfo:
     manufacturer: str = DEVICE_DEF_MANUFACTURER
     fingerbot: TuyaBLEFingerbotInfo | None = None
 
+
 class TuyaBLEEntity(CoordinatorEntity):
     """Tuya BLE base entity."""
 
@@ -237,8 +238,6 @@ class TuyaBLEEntity(CoordinatorEntity):
                 return DPType(getattr(self.device, key)[dpcode].type)
 
         return None
-
-
 
 
 class TuyaBLECoordinator(DataUpdateCoordinator[None]):
@@ -464,8 +463,7 @@ devices_database: dict[str, TuyaBLECategoryInfo] = {
     ),
     "dcq": TuyaBLECategoryInfo(
         products={
-            "gcslbvj0":  # device product_id
-            TuyaBLEProductInfo(
+            "gcslbvj0": TuyaBLEProductInfo(  # device product_id
                 name="Smart Laser Dot Cats",
             ),
         },

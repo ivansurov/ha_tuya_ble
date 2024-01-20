@@ -51,7 +51,7 @@ class TuyaBLEFingerbotModeMapping(TuyaBLESelectMapping):
             entity_category=EntityCategory.CONFIG,
             options=
                 [
-                    FINGERBOT_MODE_PUSH, 
+                    FINGERBOT_MODE_PUSH,
                     FINGERBOT_MODE_SWITCH,
                     FINGERBOT_MODE_PROGRAM,
                 ],
@@ -116,7 +116,7 @@ mapping: dict[str, TuyaBLECategorySelectMapping] = {
                 [
                     "blliqpsj",
                     "ndvkgsrm",
-                    "yiihr7zh", 
+                    "yiihr7zh",
                     "neq16kgd"
                 ],  # Fingerbot Plus
                 [
