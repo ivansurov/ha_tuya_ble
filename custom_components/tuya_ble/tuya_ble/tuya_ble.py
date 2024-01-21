@@ -719,6 +719,7 @@ class TuyaBLEDevice:
                 else:
                     continue
 
+                """
                 if self._client and self._client.is_connected:
                     _LOGGER.debug(
                         "%s: Sending device info request", self.address)
@@ -741,7 +742,7 @@ class TuyaBLEDevice:
                                       self.address, exc_info=True)
                         continue
                 else:
-                    continue
+                    continue"""
 
                 if self._client and self._client.is_connected:
                     _LOGGER.debug("%s: Sending pairing request", self.address)
