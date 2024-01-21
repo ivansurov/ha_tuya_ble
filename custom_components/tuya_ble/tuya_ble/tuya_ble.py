@@ -392,8 +392,8 @@ class TuyaBLEDevice:
         raw_uuid: bytes | None = None
         if self._advertisement_data:
             if self._advertisement_data.service_data:
-                service_data = self._advertisement_data.service_data.get(
-                    SERVICE_UUID)
+                service_data = self._advertisement_data.service_data.get(SERVICE_UUID)
+                _LOGGER.debug(f"{self.address}: Decode advertisement data: {service_data}")
                 if service_data and len(service_data) > 1:
                     match service_data[0]:
                         case 0:
