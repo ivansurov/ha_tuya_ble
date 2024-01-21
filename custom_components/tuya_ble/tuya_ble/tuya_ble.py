@@ -138,7 +138,7 @@ class TuyaBLEDataPoint:
     def changed_by_device(self) -> bool:
         return self._changed_by_device
 
-    def __repr__(self): 
+    def __repr__(self):
         return f"{{id:{self.id} type:{self.type} value:{self.value}}}"
 
     def __str__(self):
@@ -237,7 +237,7 @@ global_connect_lock = asyncio.Lock()
 @dataclass
 class TuyaBLEDeviceFunction:
     code: str
-    dp_id: int 
+    dp_id: int
     type: DPType
     values: str | dict | list | None
 
@@ -299,7 +299,6 @@ class TuyaBLEDevice:
         self._function = {}
         self._status_range = {}
 
-
     def set_ble_device_and_advertisement_data(
         self, ble_device: BLEDevice, advertisement_data: AdvertisementData
     ) -> None:
@@ -311,7 +310,7 @@ class TuyaBLEDevice:
         _LOGGER.debug("%s: Initializing", self.address)
         if await self._update_device_info():
             self._decode_advertisement_data()
-            
+
     def _build_pairing_request(self) -> bytes:
         result = bytearray()
 
@@ -357,7 +356,7 @@ class TuyaBLEDevice:
                 dpcode = f.get("code")
                 if dpcode:
                     self.function[dpcode] = TuyaBLEDeviceFunction(**f)
-                        
+
             for f in status_range:
                 dpcode = f.get("code")
                 if dpcode:
@@ -366,7 +365,7 @@ class TuyaBLEDevice:
     def update_description(self, description: TuyaBLEEntityDescription | None) -> None:
         if not description:
             return
-        
+
         self.append_functions(description.function, description.status_range)
 
         if description.values_overrides:
@@ -962,6 +961,7 @@ class TuyaBLEDevice:
             )
         packets: list[bytes] = self._build_packets(
             seq_num, code, data, response_to)
+        _LOGGER.debug(f"{self.address}: Sending packets: {packets}")
         await self._int_send_packet_while_connected(packets)
         if future:
             try:
