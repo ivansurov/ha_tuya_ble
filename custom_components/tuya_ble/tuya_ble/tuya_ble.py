@@ -662,7 +662,7 @@ class TuyaBLEDevice:
             await asyncio.sleep(0.01)
             if self._client and self._client.is_connected and self._is_paired:
                 return
-            attempts_count = 100
+            attempts_count = 10
             while attempts_count > 0:
                 attempts_count -= 1
                 if attempts_count == 0:
